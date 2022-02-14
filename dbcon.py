@@ -13,4 +13,4 @@ class PostgresManagement:
         self.connection = conn
         self.cursor = conn.cursor()
         self.schema = 'public'
-         
+        #merci  
