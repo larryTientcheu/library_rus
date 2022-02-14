@@ -3,7 +3,6 @@ import credent as creds
 
 
 
-
 ## ****** LOAD PSQL DATABASE ***** ##
 class PostgresManagement:
     def __init__(self):
@@ -14,4 +13,4 @@ class PostgresManagement:
         self.connection = conn
         self.cursor = conn.cursor()
         self.schema = 'public'
-        # merci papa 
+         
