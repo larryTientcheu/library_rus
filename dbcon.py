@@ -5,7 +5,6 @@ import pandas as pd
 
 
 
-
 ## ****** LOAD PSQL DATABASE ***** ##
 class PostgresManagement:
     def __init__(self):
