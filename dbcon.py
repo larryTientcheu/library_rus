@@ -32,7 +32,7 @@ class PostgresManagement:
         return data
 
     
-    ### CRUD SECTION ####
+    ### CRUD SECTION REMEMBER TO REMOVE ALL THE PRINT SECTIONS ####
     ##Create##
     def addUser(self, user):
         sql_command = 'INSERT INTO users (username,password,admin) values {}'.format(user)
@@ -44,6 +44,32 @@ class PostgresManagement:
         except:
             self.connection.rollback()
             print('error')
+
+    def addBook(self, book):
+        sql_command = 'INSERT INTO books (name, price, genre, author) values {}'.format(book)
+        print(sql_command)
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('inserted')
+        except:
+            self.connection.rollback()
+            print('error')
+
+    def addRental(self, rental):
+        sql_command = 'INSERT INTO rentals (bid,uid,issuedate,period,returndate,fine) values {}'.format(rental)
+        print(sql_command)
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('inserted')
+        except:
+            self.connection.rollback()
+            print('error')
+
+    ##Update##
+    
+
 
 if __name__ == "__main__":
     postgresDB = PostgresManagement()
