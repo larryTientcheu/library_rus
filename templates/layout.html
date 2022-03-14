@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Library Management System</title>
+
+    <!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
+    <!-- Bootstrap CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- themefy CSS -->
+    <link href="{{ url_for('static', filename='css/themify-icons.css')}}" rel="stylesheet">
+    <!-- swiper slider CSS -->
+    <link href="{{ url_for('static', filename='css/swiper.min.css')}}" rel="stylesheet">
+    <!-- select2 CSS -->
+    <link href="{{ url_for('static', filename='css/nice-select.css')}}" rel="stylesheet">
+    <!-- select2 CSS -->
+    <link href="{{ url_for('static', filename='css/select2.min.css')}}" rel="stylesheet">
+    <!-- owl carousel CSS -->
+    <link href="{{ url_for('static', filename='css/owl.carousel.css')}}" rel="stylesheet">
+    <!-- gijgo css -->
+    <link href="{{ url_for('static', filename='css/gijgo.min.css')}}" rel="stylesheet">
+    <!-- font awesome CSS -->
+    <link href="{{ url_for('static', filename='css/all.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/tagsinput.css')}}" rel="stylesheet">
+    <!-- datatable CSS -->
+    <link href="{{ url_for('static', filename='css/jquery.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/responsive.dataTables.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/buttons.dataTables.min.css')}}" rel="stylesheet">
+    <!-- text editor css -->
+    <link href="{{ url_for('static', filename='css/summernote-bs4.css')}}" rel="stylesheet">
+    <!-- morris css -->
+    <link href="{{ url_for('static', filename='css/morris.css')}}" rel="stylesheet">
+    <!-- metarial icon css -->
+    <link href="{{ url_for('static', filename='css/material-icons.css')}}" rel="stylesheet">
+
+    <!-- menu css  -->
+    <link href="{{ url_for('static', filename='css/metisMenu.css')}}" rel="stylesheet">
+    <!-- style CSS -->
+    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/default.css')}}" rel="stylesheet">
+</head>
+
+<body class="crm_body_bg">
+    <div>
+        {% include 'includes/_sidebar.html'%}
+        <section class="main_content dashboard_part">
+            {% include 'includes/_navbar.html'%}
+            {% block content %}{% endblock%}
+        </section>
+    </div>
+
+    <!-- jquery slim -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
+    <!-- popper js -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/popper.min.js')}}"></script>
+    <!-- bootstarp js -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <!-- sidebar menu  -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/metisMenu.js')}}"></script>
+    <!-- waypoints js -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.waypoints.min.js')}}"></script>
+    <!-- waypoints js -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/Chart.min.js')}}"></script>
+    <!-- counterup js -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.counterup.min.js')}}"></script>
+    <!-- swiper slider js -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/swiper.min.js')}}"></script>
+    <!-- nice select -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.nice-select.min.js')}}" ></script>
+    <!-- owl carousel -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+    <!-- gijgo css -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/gijgo.min.js')}}"></script>
+    <!-- responsive table -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.responsive.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.buttons.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/buttons.flash.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jszip.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/pdfmake.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/vfs_fonts.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/buttons.html5.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/buttons.print.min.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/chart.min.js')}}"></script>
+    <!-- progressbar js -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.barfiller.js')}}"></script>
+    <!-- tag input -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/tagsinput.js')}}"></script>
+    <!-- text editor js -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/summernote-bs4.js')}}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/apexcharts.js')}}"></script>
+
+    <!-- custom js -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/custom.js')}}"></script>
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bar_active_1.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/apex_chart_list.js')}}"></script>
+</body>
+
+</html>

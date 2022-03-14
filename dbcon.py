@@ -1,5 +1,6 @@
 from turtle import pos
 import psycopg2
+from sqlalchemy import sql
 import credent as creds
 import pandas as pd
 
@@ -20,6 +21,16 @@ class PostgresManagement:
         sql_command = "SELECT * FROM users;"
         data = pd.read_sql(sql_command, self.connection)
         return data
+
+    def findUser(self, username):
+        sql_command = "SELECT * FROM users WHERE username ='{}' LIMIT 1".format(username)
+        #print(sql_command)
+        try:
+            data = pd.read_sql(sql_command, self.connection)
+            return data
+        except:
+            return False
+        
 
     def findBooks(self):
         sql_command = "SELECT * FROM books;"

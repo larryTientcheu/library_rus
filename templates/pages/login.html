@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Hospital</title>
+    <title>Library Management System</title>
 
     <!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
     <!-- Bootstrap CSS -->
@@ -45,10 +45,56 @@
 
 <body class="crm_body_bg">
     <div>
-        {% include 'includes/_sidebar.html'%}
         <section class="main_content dashboard_part">
-            {% include 'includes/_navbar.html'%}
-            {% block content %}{% endblock%}
+            
+            <div class="main_content_iner ">
+                <div class="container-fluid p-0">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12">
+                            <div class="white_box mb_30">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-6">
+                                        <!-- sign_in  -->
+                                        <div class="modal-content cs_modal">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Log in</h5>
+                                            </div>
+                                            {% if error %}
+                                            <p class=error style="text-align: center; color: red; font-size: 1.5vw;"><strong>Error:</strong> {{ error }}
+                                                {% endif %}
+                                                <div class="modal-body">
+                                                    <form method="POST">
+                                                        <div class="border_style">
+                                                            <span>Or</span>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" placeholder="Username"
+                                                                name='username'>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input type="password" class="form-control" placeholder="Password"
+                                                                name='password'>
+                                                        </div>
+                                                        <p><input class="btn_1 full_width text-center; btn_1" type=submit
+                                                            value=Login>
+            
+                                                    </form>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+                        </div>
+            
+            
+            
+                    </div>
+                </div>
+            
+            
+            </div>
+           
         </section>
     </div>
 
@@ -103,3 +149,7 @@
 </body>
 
 </html>
+
+
+
+

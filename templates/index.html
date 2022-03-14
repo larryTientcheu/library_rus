@@ -1,0 +1,97 @@
+{%extends "layout.html"%} {%block content%}
+
+
+<!-- main content part here -->
+<!--/ menu  -->
+<div class="main_content_iner ">
+    <div class="container-fluid p-0">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="single_element">
+                    <div class="quick_activity">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="quick_activity_wrap">
+
+                                    <a href="doctors">
+                                        <div class="single_quick_activity d-flex">
+                                            <div class="icon">
+                                                <img src="{{ url_for('static', filename='images/man.svg')}}" alt="">
+                                            </div>
+                                            <div class="count_content">
+                                                <h3><span class="counter"></span> </h3>
+                                                <p>Users</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="nurses">
+                                        <div class="single_quick_activity d-flex">
+                                            <div class="icon">
+                                                <img src="{{ url_for('static', filename='images/cap.svg')}}" alt="">
+                                            </div>
+                                            <div class="count_content">
+                                                <h3><span class="counter"></span> </h3>
+                                                <p>Books</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="patients">
+                                    <div class="single_quick_activity d-flex">
+                                        <div class="icon">
+                                            <img src="{{ url_for('static', filename='images/wheel.svg')}}" alt="">
+                                        </div>
+                                        <div class="count_content">
+                                            <h3><span class="counter"></span> </h3>
+                                            <p>Issued Books</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-7">
+                <div class="white_box QA_section card_height_100">
+                    <div class="white_box_tittle list_header m-0 align-items-center">
+                        <div class="main-title mb-sm-15">
+                            <h3 class="m-0 nowrap">Books</h3>
+                        </div>
+                        <div class="box_right d-flex lms_block">
+                            <div class="serach_field-area2">
+                                <div class="search_inner">
+                                    <form Active="#">
+                                        <div class="search_field">
+                                            <input type="text" placeholder="Search here...">
+                                        </div>
+                                        <button type="submit"> <i class="ti-search"></i> </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="add_button ml-10">
+                                <a href="new_user" data-target="new_user" class="btn_1">Add New</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+<!-- footer part -->
+
+<!-- main content part end -->
+
+<!-- footer  -->
+
+
+
+{%endblock content%}
