@@ -1,0 +1,63 @@
+{%extends "layout.html"%} {%block content%}
+{%include 'pages/page_layout.html'%}
+<div class="add_button ml-10">
+    <a href="new_book" data-target="new_book" class="btn_1">Add New</a>
+</div>
+</div>
+</div>
+<!--/ menu  -->
+<div class="QA_table ">
+    <!-- table-responsive -->
+    <table class="table lms_table_active2">
+        <thead>
+            <tr>
+                
+                <th scope="col">BID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">genre</th>
+                <th scope="col">author</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for j in range(books|length) %}
+            <tr>
+                <th scope="row">
+                    <div class="patient_thumb d-flex align-items-center">
+                        <div class="student_list_img mr_20">
+                            <img src="{{ url_for('static', filename='images/pataint.png')}}" alt="" srcset="">
+                        </div>
+                        {{books.bid[j]}}
+                    </div>
+                </th>
+                <td>{{books.name[j]}}</td>
+                <td>{{books.price[j]}}</td>
+                <td>{{books.genre[j]}}</td>
+                <td>{{books.author[j]}}</td>
+
+                <td>
+                    <div class="amoutn_action d-flex align-items-center">
+                        <a href="#" class="status_btn">Active</a>
+                        <div class="dropdown ml-4">
+                            <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">View</a>
+                                <a class="dropdown-item" href="#">Edit</a>
+                                <a class="dropdown-item" href="#">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+{%endblock content%}

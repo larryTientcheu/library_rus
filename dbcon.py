@@ -29,18 +29,34 @@ class PostgresManagement:
             data = pd.read_sql(sql_command, self.connection)
             return data
         except:
-            return False
+            return ''
         
 
     def findBooks(self):
         sql_command = "SELECT * FROM books;"
         data = pd.read_sql(sql_command, self.connection)
         return data
-    
+
+    def findBook(self, uid):
+        sql_command = "SELECT + FROM books WHERE uid='{}'".format(uid)
+        try:
+            data = pd.read_sql(sql_command, self.connection)
+            return data
+        except:
+            return ''
+
     def findRentals(self):
-        sql_command = "SELECT * FROM rentals;"
-        data = pd.read_sql(sql_command, self.connction)
+        sql_command = "SELECT * FROM rental;"
+        data = pd.read_sql(sql_command, self.connection)
         return data
+
+    def findRental(self, rid):
+        sql_command = "SELECT + FROM rental WHERE uid='{}'".format(rid)
+        try:
+            data = pd.read_sql(sql_command, self.connection)
+            return data
+        except:
+            return ''
 
     
     ### CRUD SECTION REMEMBER TO REMOVE ALL THE PRINT SECTIONS ####

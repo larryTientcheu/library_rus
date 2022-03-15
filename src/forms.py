@@ -1,3 +1,5 @@
+from lib2to3.pgen2.pgen import generate_grammar
+from unicodedata import name
 from flask.globals import request
 from dbcon import PostgresManagement
 from src.functions import Functions
@@ -8,7 +10,7 @@ class VariousForms():
     def __init__(self) -> None:
         pass
 
-    def addNewUser(self, request):
+    def addUser(self, request):
         username = request.form['username']
         password = request.form['password']
         password = func.hashPassword(password)
@@ -18,5 +20,17 @@ class VariousForms():
             admin = False
         user = username, password, admin
         postgres.addUser(user)
+
+    def addBook(self, request):
+        name = request.form['name']
+        price = request.form['price']
+        genre = request.form['genre']
+        author = request.form['author']
+
+        book = name, price, genre, author
+        postgres.addBook(book)
+
+    def addRental(self, request):
+        bid = request.form['bid']
 
 
