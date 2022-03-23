@@ -12,3 +12,9 @@ class Functions:
     def checkPassword(self, hashed, password):
         result = check_password_hash(hashed, password)
         return result
+
+    def calculateFine(self, rental):
+        base = 500
+        diff = rental['returndate'] - rental['issuedate']
+        fine = base*diff
+        return fine

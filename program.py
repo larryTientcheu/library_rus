@@ -65,7 +65,7 @@ def new_user():
             return redirect(url_for('users'))
         return render_template('forms/new_user.html')
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('login'))
 
 @app.route('/books')
 def books():
@@ -83,7 +83,7 @@ def new_book():
             return redirect(url_for('books'))
         return render_template('forms/new_book.html')
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('login'))
 
 
 @app.route('/issued_books')
@@ -93,6 +93,31 @@ def issued_books():
         return render_template('pages/issued_books.html', ibooks=ibooks)
     else:
         return redirect(url_for('login'))
+
+@app.route('/issue_book', methods=['GET','POST'])
+def issue_book():
+    if 'logged' in session:
+        bid = postgres.findBooks()
+        uid = postgres.findUsers()
+        if request.method == 'POST' and len(request.form) > 0:
+            forms.addRental(request)
+            return redirect(url_for('issued_books'))
+        return render_template('forms/issue_book.html', bid=bid, uid=uid)
+    else:
+        return redirect(url_for('login'))
+
+
+@app.route('/return_book', methods=['GET','POST'])
+def retrun_books():
+    if 'logged' in session:
+        rid = postgres.findReturnBooks()
+        if request.method == 'POST' and len(request.form) > 0:
+            forms.addRental(request)
+            return redirect(url_for('issued_books'))
+        return render_template('forms/issue_book.html', rid=rid)
+    else:
+        return redirect(url_for('login'))
+
     
 if __name__ == '__main__':
     app.run(debug=True)

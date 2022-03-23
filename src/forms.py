@@ -32,5 +32,13 @@ class VariousForms():
 
     def addRental(self, request):
         bid = request.form['bid']
+        uid = request.form['uid']
+        issue_date = request.form['issue_date']
+        period = request.form['period']
+
+        print(bid)
+
+        rental = bid, uid, issue_date,period
+        postgres.addRental(rental)
 
 

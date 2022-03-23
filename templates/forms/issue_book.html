@@ -2,26 +2,52 @@
 <form method="POST">
     <div class="form-group">
 
-        <label for="name">name:</label><br>
-        <input type="text" class="form-control" id="name" name="name"><br>
+        <label for="bid">BID:</label>
+        <select class="default_sel mb_30 w-100" style="display: none;" id='bid' name='bid'>
+            <option data-display="Select">Nothing</option>
 
-        <label for="name">name:</label><br>
-        <input type="text" class="form-control" id="name" name="name"><br>
-        
-        <label for="name">name:</label><br>
-        <input type="text" class="form-control" id="name" name="name"><br>
+            {% for j in range(bid|length) %}
+            <option value={{bid.bid[j]}}>{{bid.name[j]}} {{bid.author[j]}}</option>
+            {% endfor %}
+        </select>
+        <div class="nice-select default_sel mb_30 w-100" tabindex="0"><span class="current">Select</span>
+            <div class="nice-select-search-box"><input type="text" class="nice-select-search" placeholder="Search...">
+            </div>
+            <ul class="list">
+                <li data-value="Nothing" data-display="Select" class="option selected focus" style="">Nothing</li>
 
-        <label for="name">name:</label><br>
-        <input type="text" class="form-control" id="name" name="name"><br>
+                {% for j in range(bid|length) %}
+                <li data-value={{bid.bid[j]}} class="option" style="">{{bid.name[j]}} {{bid.author[j]}}</li>
+                {% endfor %}
+            </ul>
+        </div><br>
 
-        <label for="price">price:</label><br>
-        <input type="text" class="form-control" id="price" name="price"><br>
+        <label for="bid">UID</label>
+        <select class="default_sel mb_30 w-100" style="display: none;" id='uid' name='uid'>
+            <option data-display="Select">Nothing</option>
 
-        <label for="genre">genre:</label><br>
-        <input type="text" class="form-control" id="genre" name="genre"><br>
+            {% for j in range(uid|length) %}
+            <option value={{uid.uid[j]}}>{{uid.username[j]}} </option>
+            {% endfor %}
+        </select>
+        <div class="nice-select default_sel mb_30 w-100" tabindex="0"><span class="current">Select</span>
+            <div class="nice-select-search-box"><input type="text" class="nice-select-search" placeholder="Search...">
+            </div>
+            <ul class="list">
+                <li data-value="Nothing" data-display="Select" class="option selected focus" style="">Nothing</li>
 
-        <label for="author">author:</label><br>
-        <input type="text" class="form-control" id="author" name="author"><br>
+                {% for j in range(uid|length) %}
+                <li data-value={{uid.uid[j]}} class="option" style="">{{uid.username[j]}}</li>
+                {% endfor %}
+            </ul>
+        </div><br>
+
+        <label for="name">issue date:</label><br>
+        <input type="datetime-local" class="form-control" id="issue_date" name="issue_date"><br>
+
+        <label for="price">period:</label><br>
+        <input type="text" class="form-control" id="period" name="period"><br>
+
 
 
     </div>

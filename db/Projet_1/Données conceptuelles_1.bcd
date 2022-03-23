@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{F8246D65-2382-40C5-B418-2E2DCC34E12F}" Label="" LastModificationDate="1644427076" Name="Données conceptuelles_1" Objects="44" Symbols="9" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{F8246D65-2382-40C5-B418-2E2DCC34E12F}" Label="" LastModificationDate="1644427206" Name="Données conceptuelles_1" Objects="44" Symbols="9" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -12,7 +12,7 @@
 <a:Code>DONNEES_CONCEPTUELLES_1</a:Code>
 <a:CreationDate>1644421775</a:CreationDate>
 <a:Creator>Grimm</a:Creator>
-<a:ModificationDate>1644427031</a:ModificationDate>
+<a:ModificationDate>1644427086</a:ModificationDate>
 <a:Modifier>Grimm</a:Modifier>
 <a:PackageOptionsText>[FolderOptions]
 
@@ -770,7 +770,7 @@ IndxThreshold=
 ClassPrefix=
 ColnFKName=%.3:PARENT%_%COLUMN%
 ColnFKNameUse=No
-PreserveMode=Yes
+PreserveMode=No
 
 [ModelOptions\Generate\Oom]
 CheckModel=Yes
@@ -1251,7 +1251,7 @@ CARD 0 Arial,8,N</a:FontList>
 </o:AssociationLinkSymbol>
 <o:EntitySymbol Id="o6">
 <a:CreationDate>1644426319</a:CreationDate>
-<a:ModificationDate>1644427031</a:ModificationDate>
+<a:ModificationDate>1644427086</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-29863,17028), (-11687,23770))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -1272,7 +1272,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 </o:EntitySymbol>
 <o:EntitySymbol Id="o13">
 <a:CreationDate>1644426322</a:CreationDate>
-<a:ModificationDate>1644427031</a:ModificationDate>
+<a:ModificationDate>1644427086</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((3201,15341), (19447,23057))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -1293,7 +1293,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 </o:EntitySymbol>
 <o:EntitySymbol Id="o10">
 <a:CreationDate>1644426323</a:CreationDate>
-<a:ModificationDate>1644427031</a:ModificationDate>
+<a:ModificationDate>1644427086</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
 <a:Rect>((-15004,-8731), (-150,-1015))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
@@ -1513,7 +1513,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>RENTAL</a:Code>
 <a:CreationDate>1644426323</a:CreationDate>
 <a:Creator>Grimm</a:Creator>
-<a:ModificationDate>1644427064</a:ModificationDate>
+<a:ModificationDate>1644427206</a:ModificationDate>
 <a:Modifier>Grimm</a:Modifier>
 <c:Identifiers>
 <o:Identifier Id="o43">
@@ -1741,7 +1741,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>ASSOCIATION_1</a:Code>
 <a:CreationDate>1644426743</a:CreationDate>
 <a:Creator>Grimm</a:Creator>
-<a:ModificationDate>1644427064</a:ModificationDate>
+<a:ModificationDate>1644427103</a:ModificationDate>
 <a:Modifier>Grimm</a:Modifier>
 </o:Association>
 <o:Association Id="o22">
@@ -1750,7 +1750,7 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>ASSOCIATION_2</a:Code>
 <a:CreationDate>1644426745</a:CreationDate>
 <a:Creator>Grimm</a:Creator>
-<a:ModificationDate>1644426745</a:ModificationDate>
+<a:ModificationDate>1644427206</a:ModificationDate>
 <a:Modifier>Grimm</a:Modifier>
 </o:Association>
 </c:Associations>
@@ -1773,9 +1773,9 @@ LABL 0 Arial,8,N</a:FontList>
 <a:ObjectID>C250265B-ECEE-4C10-9C8B-367D844CB235</a:ObjectID>
 <a:CreationDate>1644426743</a:CreationDate>
 <a:Creator>Grimm</a:Creator>
-<a:ModificationDate>1644427064</a:ModificationDate>
+<a:ModificationDate>1644427103</a:ModificationDate>
 <a:Modifier>Grimm</a:Modifier>
-<a:Cardinality>1,n</a:Cardinality>
+<a:Cardinality>1,1</a:Cardinality>
 <c:Object1>
 <o:Association Ref="o21"/>
 </c:Object1>
@@ -1801,9 +1801,9 @@ LABL 0 Arial,8,N</a:FontList>
 <a:ObjectID>9A5C251F-2636-4B87-9B4A-AA6336A9EE45</a:ObjectID>
 <a:CreationDate>1644426745</a:CreationDate>
 <a:Creator>Grimm</a:Creator>
-<a:ModificationDate>1644426745</a:ModificationDate>
+<a:ModificationDate>1644427206</a:ModificationDate>
 <a:Modifier>Grimm</a:Modifier>
-<a:Cardinality>0,n</a:Cardinality>
+<a:Cardinality>1,1</a:Cardinality>
 <c:Object1>
 <o:Association Ref="o22"/>
 </c:Object1>

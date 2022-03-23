@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?PowerDesigner AppLocale="UTF16" ID="{F8246D65-2382-40C5-B418-2E2DCC34E12F}" Label="" LastModificationDate="1644427206" Name="Données conceptuelles_1" Objects="44" Symbols="9" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
+<?PowerDesigner AppLocale="UTF16" ID="{F8246D65-2382-40C5-B418-2E2DCC34E12F}" Label="" LastModificationDate="1647345411" Name="Données conceptuelles_1" Objects="44" Symbols="9" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" signature="CDM_DATA_MODEL_XML" version="15.1.0.2850"?>
 <!-- Veuillez ne pas modifier ce fichier -->
 
 <Model xmlns:a="attribute" xmlns:c="collection" xmlns:o="object">
@@ -1212,8 +1212,8 @@ CARD 0 Arial,8,N</a:FontList>
 <o:AssociationLinkSymbol Id="o12">
 <a:CreationDate>1644426745</a:CreationDate>
 <a:ModificationDate>1644426745</a:ModificationDate>
-<a:Rect>((1837,5812), (11025,16650))</a:Rect>
-<a:ListOfPoints>((11025,16650),(1837,5812))</a:ListOfPoints>
+<a:Rect>((1837,5812), (10978,16650))</a:Rect>
+<a:ListOfPoints>((10978,16650),(1837,5812))</a:ListOfPoints>
 <a:ArrowStyle>0</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1274,7 +1274,7 @@ Identifiers 0 Arial,8,N</a:FontList>
 <a:CreationDate>1644426322</a:CreationDate>
 <a:ModificationDate>1644427086</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((3201,15341), (19447,23057))</a:Rect>
+<a:Rect>((1927,15341), (20721,23057))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -1648,9 +1648,10 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>NAME</a:Code>
 <a:CreationDate>1644426606</a:CreationDate>
 <a:Creator>Grimm</a:Creator>
-<a:ModificationDate>1644426726</a:ModificationDate>
+<a:ModificationDate>1647345411</a:ModificationDate>
 <a:Modifier>Grimm</a:Modifier>
-<a:DataType>LVA</a:DataType>
+<a:DataType>LVA1024</a:DataType>
+<a:Length>1024</a:Length>
 </o:DataItem>
 <o:DataItem Id="o38">
 <a:ObjectID>E0F2168B-6F49-4117-8E58-023EB48721A5</a:ObjectID>
@@ -1668,9 +1669,10 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>GENRE</a:Code>
 <a:CreationDate>1644426606</a:CreationDate>
 <a:Creator>Grimm</a:Creator>
-<a:ModificationDate>1644426726</a:ModificationDate>
+<a:ModificationDate>1647345411</a:ModificationDate>
 <a:Modifier>Grimm</a:Modifier>
-<a:DataType>LVA</a:DataType>
+<a:DataType>LVA1024</a:DataType>
+<a:Length>1024</a:Length>
 </o:DataItem>
 <o:DataItem Id="o42">
 <a:ObjectID>4FB97D0B-782F-4C37-8FD7-CBF83DB5251C</a:ObjectID>
@@ -1678,9 +1680,10 @@ LABL 0 Arial,8,N</a:FontList>
 <a:Code>AUTHOR</a:Code>
 <a:CreationDate>1644426606</a:CreationDate>
 <a:Creator>Grimm</a:Creator>
-<a:ModificationDate>1644426726</a:ModificationDate>
+<a:ModificationDate>1647345411</a:ModificationDate>
 <a:Modifier>Grimm</a:Modifier>
-<a:DataType>LVA</a:DataType>
+<a:DataType>LVA1024</a:DataType>
+<a:Length>1024</a:Length>
 </o:DataItem>
 <o:DataItem Id="o45">
 <a:ObjectID>022FE7E0-444C-437F-9097-2904CF766584</a:ObjectID>
