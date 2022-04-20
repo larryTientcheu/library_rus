@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 8                                  */
-/* Date de création :  15/03/2022 12:58:38 PM                   */
+/* Date de création :  23/03/2022 09:42:08 AM                   */
 /*==============================================================*/
 
 
@@ -47,8 +47,8 @@ create table RENTAL (
    BID                  INT4                 not null,
    UID                  INT4                 not null,
    ISSUEDATE            DATE                 not null,
-   PERIOD               CHAR(64000)          null,
-   RETURNDATE           DATE                 not null,
+   PERIOD               INT4                 null,
+   RETURNDATE           DATE                 null,
    FINE                 NUMERIC              null,
    constraint PK_RENTAL primary key (RID)
 );

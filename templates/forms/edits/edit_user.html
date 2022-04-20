@@ -1,0 +1,23 @@
+{%extends "layout.html"%} {%block content%}
+<form method="POST">
+    <div class="form-group">
+
+      <label for="uid">UID:</label><br>
+      <input type="text" class="form-control" id="uid" name="uid" value={{uid.uid[0]}} placeholder={{uid.uid[0]}}><br>
+
+      <label for="username">Username:</label><br>
+      <input type="text" class="form-control" id="username" name="username" value={{uid.username[0]}} placeholder={{uid.username[0]}}><br>
+
+      <label for="password">Password:</label><br>
+      <input type="text" class="form-control" id="password" name="password"><br>
+
+      <label for ="admin">Admin</label><br>
+      <input type="checkbox" class="form-control" id="admin" name="admin" value="true">
+  
+
+    </div>
+    <p><input type=submit value=Add class="btn_1">
+  </form>
+
+
+{%endblock content%}

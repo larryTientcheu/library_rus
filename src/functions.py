@@ -13,8 +13,8 @@ class Functions:
         result = check_password_hash(hashed, password)
         return result
 
-    def calculateFine(self, rental):
+    def calculateFine(self, returnDate, issueDate):
         base = 500
-        diff = rental['returndate'] - rental['issuedate']
+        diff = returnDate - issueDate
         fine = base*diff
         return fine

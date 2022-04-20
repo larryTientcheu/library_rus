@@ -2,12 +2,12 @@
 <form method="POST">
     <div class="form-group">
 
-        <label for="bid">RID:</label>
-        <select class="default_sel mb_30 w-100" style="display: none;" id='bid' name='bid'>
+        <label for="rid">RID:</label>
+        <select class="default_sel mb_30 w-100" style="display: none;" id='rid' name='rid'>
             <option data-display="Select">Nothing</option>
 
             {% for j in range(rid|length) %}
-            <option value={{rid.rid[j]}}>{{rid.bid[j]}} "["{{rid.name[j]}}"]" "["{{}rid.author[j]}"]"</option>
+            <option value={{rid.rid[j]}}>{{rid.bid[j]}} [{{rid.name[j]}}] [{{rid.author[j]}}]</option>
             {% endfor %}
         </select>
         <div class="nice-select default_sel mb_30 w-100" tabindex="0"><span class="current">Select</span>
@@ -16,8 +16,8 @@
             <ul class="list">
                 <li data-value="Nothing" data-display="Select" class="option selected focus" style="">Nothing</li>
 
-                {% for j in range(bid|length) %}
-                <li data-value={{bid.bid[j]}} class="option" style="">{{bid.name[j]}} {{bid.author[j]}}</li>
+                {% for j in range(rid|length) %}
+                <li data-value={{rid.rid[j]}} class="option" style="">{{rid.bid[j]}} [{{rid.name[j]}}] [{{rid.author[j]}}]</li>
                 {% endfor %}
             </ul>
         </div><br>

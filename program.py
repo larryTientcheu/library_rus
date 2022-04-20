@@ -16,7 +16,7 @@ def login():
     error = None
     if 'logged' not in session:
         #session.permanent = True
-        app.permanent_session_lifetime = timedelta(minutes=30)
+        app.permanent_session_lifetime = timedelta(days=30)
         if request.method == 'POST':
             '''
             function to get the users from the db and check the pswd while removing the 
@@ -112,12 +112,25 @@ def retrun_books():
     if 'logged' in session:
         rid = postgres.findReturnBooks()
         if request.method == 'POST' and len(request.form) > 0:
-            forms.addRental(request)
+            forms.returnRental(request)
             return redirect(url_for('issued_books'))
-        return render_template('forms/issue_book.html', rid=rid)
+        return render_template('forms/return_book.html', rid=rid)
     else:
         return redirect(url_for('login'))
 
+
+@app.route('/edit_user/<int:uid>')
+def edit_user(uid):
+    if 'logged' in session:
+        u = postgres.findUserById(uid)
+        if u.admin[0]:
+            flash('User has been edited')
+            return render_template('forms/edits/edit_user.html',uid=u)
+        else:
+            flash('Sorry, you don\'t have the permission to view this file')
+            return redirect(url_for('pages/users'))
+    else:
+        return redirect(url_for('login'))
     
 if __name__ == '__main__':
     app.run(debug=True)

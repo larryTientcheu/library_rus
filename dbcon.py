@@ -30,13 +30,21 @@ class PostgresManagement:
         except:
             return ''
 
+    def findUserById(self, uid):
+        sql_command = "SELECT * FROM users WHERE uid = '{}' LIMIT 1".format(uid)
+        try:
+            data = pd.read_sql(sql_command, self.connection)
+            return data
+        except:
+            return ''
+            
     def findBooks(self):
         sql_command = "SELECT * FROM books;"
         data = pd.read_sql(sql_command, self.connection)
         return data
 
     def findBook(self, uid):
-        sql_command = "SELECT + FROM books WHERE uid='{}'".format(uid)
+        sql_command = "SELECT * FROM books WHERE uid='{}'".format(uid)
         try:
             data = pd.read_sql(sql_command, self.connection)
             return data
@@ -49,7 +57,7 @@ class PostgresManagement:
         return data
 
     def findRental(self, rid):
-        sql_command = "SELECT + FROM rental WHERE uid='{}'".format(rid)
+        sql_command = "SELECT * FROM rental WHERE rid='{}'".format(rid)
         try:
             data = pd.read_sql(sql_command, self.connection)
             return data
@@ -103,7 +111,15 @@ class PostgresManagement:
             print('error')
 
     def returnRental(self,rental):
-        sql_command =''
+        sql_command ="UPDATE rental SET returndate = '{}', fine = '{}' where rid = '{}'".format(rental[0],rental[1],rental[2])
+        print(sql_command)
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('inserted')
+        except:
+            self.connection.rollback()
+            print('error')
 
     ##Update##
 

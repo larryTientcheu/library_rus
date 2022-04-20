@@ -1,4 +1,15 @@
 {%extends "layout.html"%} {%block content%}
+{% for message in get_flashed_messages() %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+{% endfor %}
 {%include 'pages/page_layout.html'%}
 <div class="add_button ml-10">
     <a href="new_user" data-target="new_user" class="btn_1">Add New</a>
@@ -42,7 +53,6 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">View</a>
                                 <a class="dropdown-item" href="#">Edit</a>
                                 <a class="dropdown-item" href="#">Delete</a>
                             </div>
