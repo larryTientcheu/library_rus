@@ -37,7 +37,7 @@ class PostgresManagement:
             return data
         except:
             return ''
-            
+
     def findBooks(self):
         sql_command = "SELECT * FROM books;"
         data = pd.read_sql(sql_command, self.connection)
@@ -122,6 +122,17 @@ class PostgresManagement:
             print('error')
 
     ##Update##
+
+    def editUser(self, user):
+        sql_command = "UPDATE users SET username = '{}', username = '{}', username = '{}' where uid='{}'".format(user[1],user[2],user[3],user[0])
+        print(sql_command)
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('updated')
+        except:
+            self.connection.rollback()
+            print('error')
 
 
 if __name__ == "__main__":

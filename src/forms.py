@@ -25,17 +25,21 @@ class VariousForms():
         postgres.addUser(user)
 
 
-    def editUser(self, request):
-        uid = request.form['uid']
+    def editUser(self, request, user):
+        uid = user.uid[0]
         username = request.form['username']
-        password = request.form['password']
-        password = func.hashPassword(password)
-        if 'admin' in request.form:
-            admin = request.form['admin']
+        if func.checkPassword(user.password[0], request.form['opassword']):
+            npassword = request.form['new_password']
+            npassword = func.hashPassword(npassword)
+            if 'admin' in request.form:
+                admin = request.form['admin']
+            else:
+                admin = False
+            user = uid, username, npassword, admin
+            postgres.editUser(user)
+            return True
         else:
-            admin = False
-        user = uid, username, password, admin
-        #postgres.editUser(user) finish this function in dbcon
+            return False
 
 
     def addBook(self, request):

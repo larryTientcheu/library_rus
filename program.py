@@ -119,16 +119,26 @@ def retrun_books():
         return redirect(url_for('login'))
 
 
-@app.route('/edit_user/<int:uid>')
+@app.route('/edit_user/<int:uid>', methods=['GET', 'POST'])
 def edit_user(uid):
     if 'logged' in session:
         u = postgres.findUserById(uid)
-        if u.admin[0]:
-            flash('User has been edited')
-            return render_template('forms/edits/edit_user.html',uid=u)
+        # if u.admin[0]:
+        #     return render_template('forms/edits/edit_user.html',uid=u)
+        # else:
+        #     flash('Sorry, you don\'t have the permission to view this file')
+        #     return redirect(url_for('index'))
+
+        ## Code for restricting access
+        if request.method == 'POST' and len(request.form) > 0:
+            if (forms.editUser(request, u)):
+                flash('User has been edited succesfully')
+                return redirect(url_for('users'))
+            else:
+                flash('Error when editing the user')
+                return redirect(url_for('edit_user/{}'.format(u.uid[0])))
         else:
-            flash('Sorry, you don\'t have the permission to view this file')
-            return redirect(url_for('pages/users'))
+           return render_template('forms/edits/edit_user.html',uid=u) 
     else:
         return redirect(url_for('login'))
     
