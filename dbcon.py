@@ -43,8 +43,8 @@ class PostgresManagement:
         data = pd.read_sql(sql_command, self.connection)
         return data
 
-    def findBook(self, uid):
-        sql_command = "SELECT * FROM books WHERE uid='{}'".format(uid)
+    def findBook(self, bid):
+        sql_command = "SELECT * FROM books WHERE bid='{}'".format(bid)
         try:
             data = pd.read_sql(sql_command, self.connection)
             return data
@@ -124,16 +124,30 @@ class PostgresManagement:
     ##Update##
 
     def editUser(self, user):
-        sql_command = "UPDATE users SET username = '{}', username = '{}', username = '{}' where uid='{}'".format(user[1],user[2],user[3],user[0])
+        sql_command = "UPDATE users SET \"password\" = '{}', \"admin\" = '{}' where uid='{}'".format(user[2],user[3],user[0])
         print(sql_command)
         try:
             self.cursor.execute(sql_command)
             self.connection.commit()
             print('updated')
+            return True
         except:
             self.connection.rollback()
             print('error')
+            return False
 
+    def editBook(self, book):
+        sql_command = "UPDATE books SET \"name\" = '{}', price = '{}', genre='{}', author ='{}' where bid='{}'".format(book[1],book[2],book[3],book[4], book[0])
+        print(sql_command)
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('updated')
+            return True
+        except:
+            self.connection.rollback()
+            print('error')
+            return False
 
 if __name__ == "__main__":
     postgresDB = PostgresManagement()

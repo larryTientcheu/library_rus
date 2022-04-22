@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* Nom de SGBD :  PostgreSQL 8                                  */
-/* Date de création :  23/03/2022 09:42:08 AM                   */
+/* Date de création :  22/04/2022 02:24:18 AM                   */
 /*==============================================================*/
 
 
@@ -79,7 +79,8 @@ BID
 /*==============================================================*/
 create table USERS (
    UID                  SERIAL               not null,
-   USERNAME             VARCHAR(1024)        not null,
+   USERNAME             VARCHAR(1024)        not null
+      constraint CKC_USERNAME_USERS check (USERNAME = lower(USERNAME)),
    PASSWORD             VARCHAR(1024)        not null,
    ADMIN                BOOL                 not null,
    constraint PK_USERS primary key (UID)

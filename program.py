@@ -27,6 +27,8 @@ def login():
                 if len(user) > 0 and func.checkPassword(user.password[0], request.form['password']):
                     session['logged'] = True
                     session['username'] = user.username[0]
+                    session['uid'] = int(user.uid[0])
+                    session['admin'] = bool(user.admin[0])
                     flash('You were successfully logged in as {}'.format(session['username']))
                     return redirect(url_for('index'))
                 else:
@@ -123,24 +125,45 @@ def retrun_books():
 def edit_user(uid):
     if 'logged' in session:
         u = postgres.findUserById(uid)
-        # if u.admin[0]:
-        #     return render_template('forms/edits/edit_user.html',uid=u)
-        # else:
-        #     flash('Sorry, you don\'t have the permission to view this file')
-        #     return redirect(url_for('index'))
 
         ## Code for restricting access
-        if request.method == 'POST' and len(request.form) > 0:
-            if (forms.editUser(request, u)):
-                flash('User has been edited succesfully')
-                return redirect(url_for('users'))
+        if session['admin']:
+            if request.method == 'POST' and len(request.form) > 0:
+                if (forms.editUser(request, u)):
+                    flash('User has been edited succesfully')
+                    return redirect(url_for('users'))
+                else:
+                    flash('Error when editing the user')
+                    return render_template('forms/edits/edit_user.html',user=u)
             else:
-                flash('Error when editing the user')
-                return redirect(url_for('edit_user/{}'.format(u.uid[0])))
+                return render_template('forms/edits/edit_user.html',user=u)
         else:
-           return render_template('forms/edits/edit_user.html',uid=u) 
+            flash('Sorry, you don\'t have the permission to view this page')
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
+
+@app.route('/edit_book/<int:bid>', methods=['GET', 'POST'])
+def edit_book(bid):
+    if 'logged' in session:
+        b = postgres.findBook(bid)
+        if session['admin']:
+            if request.method == 'POST' and len(request.form) > 0:
+                if (forms.editBook(request, b)):
+                    flash('Book has been edited succesfully')
+                    return redirect(url_for('books'))
+                else:
+                    flash('Error when editing the book')
+                    return render_template('forms/edits/edit_book.html',book=b)
+            else:
+                return render_template('forms/edits/edit_book.html',book=b)
+        else:
+            flash('Sorry, you don\'t have the permission to view this page')
+            return redirect(url_for('index'))
+    else:
+        return redirect(url_for('login'))
+
+
     
 if __name__ == '__main__':
     app.run(debug=True)

@@ -27,8 +27,10 @@ class VariousForms():
 
     def editUser(self, request, user):
         uid = user.uid[0]
-        username = request.form['username']
-        if func.checkPassword(user.password[0], request.form['opassword']):
+        username = user.username[0]
+        opassword = request.form['old_password']
+        
+        if func.checkPassword(user.password[0], opassword):
             npassword = request.form['new_password']
             npassword = func.hashPassword(npassword)
             if 'admin' in request.form:
@@ -36,9 +38,13 @@ class VariousForms():
             else:
                 admin = False
             user = uid, username, npassword, admin
-            postgres.editUser(user)
-            return True
+
+            if(postgres.editUser(user)):
+                return True
+            else:
+                return False
         else:
+            
             return False
 
 
@@ -50,6 +56,20 @@ class VariousForms():
 
         book = name, price, genre, author
         postgres.addBook(book)
+
+
+    def editBook(self, request, book):
+        bid = book.bid[0]
+        name = request.form['name']
+        price = request.form['price']
+        genre = request.form['genre']
+        author = request.form['author']
+        
+        book = bid, name, price, genre, author
+        if(postgres.editBook(book)):
+            return True
+        else:
+            return False     
 
     def addRental(self, request):
         bid = request.form['bid']

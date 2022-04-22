@@ -1,0 +1,43 @@
+{%extends "layout.html"%} {%block content%}
+{% for message in get_flashed_messages() %}
+
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+
+{% endfor %}
+
+
+<form method="POST">
+    <div class="form-group">
+
+      
+
+      <h3><label for="uid">BID:</label><br></h3>
+      <input type="text" class="form-control" id="uid" name="uid" value={{book.bid[0]}} placeholder={{book.bid[0]}} readonly><br>
+
+      <label for="name">Name:</label><br>
+      <input type="text" class="form-control" id="name" name="name" placeholder={{book.name[0]}}><br>
+
+      <label for="price">Price:</label><br>
+      <input type="text" class="form-control" id="price" name="price" placeholder={{book.price[0]}}><br>
+
+      <label for="genre">Genre:</label><br>
+      <input type="text" class="form-control" id="genre" name="genre" placeholder={{book.genre[0]}}><br>
+
+      <label for="author">:</label><br>
+      <input type="text" class="form-control" id="author" name="author" placeholder={{book.author[0]}}><br>
+
+      
+  
+
+    </div>
+    <p><input type=submit value=Add class="btn_1">
+  </form>
+
+
+{%endblock content%}
