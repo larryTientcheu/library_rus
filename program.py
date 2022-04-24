@@ -163,6 +163,29 @@ def edit_book(bid):
     else:
         return redirect(url_for('login'))
 
+@app.route('/delete_book/<int:bid>')
+def delete_book(bid):
+    if 'logged' in session:
+        if(forms.deleteBook(bid)):
+            flash("The book has been deleted succesfully")
+            return redirect(url_for('books'))
+        else:
+            flash("The book has not been deleted")
+            return redirect(url_for('books'))
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/delete_user/<int:uid>')
+def delete_user(uid):
+    if 'logged' in session:
+        if(forms.deleteUser(uid)):
+            flash("The user has been deleted succesfully")
+            return redirect(url_for('users'))
+        else:
+            flash("The user has not been deleted")
+            return redirect(url_for('users'))
+    else:
+        return redirect(url_for('login'))
 
     
 if __name__ == '__main__':

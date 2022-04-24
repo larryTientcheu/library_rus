@@ -2,6 +2,7 @@ from lib2to3.pgen2.pgen import generate_grammar
 import re
 from unicodedata import name
 from flask.globals import request
+from sqlalchemy import true
 from dbcon import PostgresManagement
 from src.functions import Functions
 from datetime import datetime
@@ -58,6 +59,13 @@ class VariousForms():
         postgres.addBook(book)
 
 
+    def deleteUser(self, uid):
+        if (postgres.deleteUser(uid)):
+            return True
+        else:
+            return False
+
+
     def editBook(self, request, book):
         bid = book.bid[0]
         name = request.form['name']
@@ -70,6 +78,12 @@ class VariousForms():
             return True
         else:
             return False     
+
+    def deleteBook(self, bid):
+        if (postgres.deleteBook(bid)):
+            return True
+        else:
+            return False
 
     def addRental(self, request):
         bid = request.form['bid']

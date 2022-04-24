@@ -149,6 +149,35 @@ class PostgresManagement:
             print('error')
             return False
 
+    ### DELETE
+    def deleteUser(self, uid):
+        sql_command = "DELETE FROM users where uid={}".format(uid)
+        print(sql_command)
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('deleted')
+            return True
+        except:
+            self.connection.rollback()
+            print('error')
+            return False
+
+    def deleteBook(self, bid):
+        sql_command = "DELETE FROM books where bid={}".format(bid)
+        print(sql_command)
+        try:
+            self.cursor.execute(sql_command)
+            self.connection.commit()
+            print('deleted')
+            return True
+        except:
+            self.connection.rollback()
+            print('error')
+            return False
+
+
+
 if __name__ == "__main__":
     postgresDB = PostgresManagement()
     print(postgresDB.findUsers())
