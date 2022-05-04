@@ -1,0 +1,6 @@
+datetime
+flask
+psycopg2
+pandas
+werkzeug
+sqlalchemy
