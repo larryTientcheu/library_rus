@@ -2,6 +2,7 @@
 import psycopg2
 import credent as creds
 import pandas as pd
+import os
 
 
 ## ****** LOAD PSQL DATABASE ***** ##
@@ -10,7 +11,11 @@ class PostgresManagement:
         # Set up a connection to the postgres server.
         conn_string = "host=" + creds.PGHOST + " port=" + "5432" + " dbname=" + creds.PGDATABASE + " user=" + creds.PGUSER \
             + " password=" + creds.PGPASSWORD
-        conn = psycopg2.connect(conn_string)
+        #conn = psycopg2.connect(conn_string)
+
+        DATABASE_URL = os.environ['DATABASE_URL']
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
         self.connection = conn
         self.cursor = conn.cursor()
         self.schema = 'public'
