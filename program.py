@@ -9,7 +9,7 @@ func = Functions()
 forms = VariousForms()
 
 app = Flask(__name__)
-#app.secret_key = 'grimmteshco'
+app.secret_key = 'grimmteshco'
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
