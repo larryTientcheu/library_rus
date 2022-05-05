@@ -14,7 +14,7 @@ class PostgresManagement:
         #conn = psycopg2.connect(conn_string)
 
         DATABASE_URL = os.environ['DATABASE_URL']
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')w
 
         self.connection = conn
         self.cursor = conn.cursor()
