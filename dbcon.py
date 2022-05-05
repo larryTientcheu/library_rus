@@ -1,4 +1,4 @@
-from turtle import pos
+
 import psycopg2
 import credent as creds
 import pandas as pd
