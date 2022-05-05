@@ -180,4 +180,4 @@ class PostgresManagement:
 
 if __name__ == "__main__":
     postgresDB = PostgresManagement()
-    print(postgresDB.findUsers())
+    #print(postgresDB.findUsers())
