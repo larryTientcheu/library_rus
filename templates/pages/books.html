@@ -34,7 +34,8 @@
             </tr>
         </thead>
         <tbody>
-            {% for j in range(books|length) %}
+            {%set a, b = paglen%}
+            {% for j in range(a,b) %}
             <tr>
                 <th scope="row">
                     <div class="patient_thumb d-flex align-items-center">
@@ -60,18 +61,17 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="edit_book/{{books.bid[j]}}">Edit</a>
-                                <!-- <button  class="dropdown-item" value="{{books.bid[j]}}" href="delete_book/{{books.bid[j]}}" style="color: red;" onclick="document.getElementById('id01').style.display='block'">Delete</button> -->
                                 <a  class="dropdown-item" href="delete_book/{{books.bid[j]}}" style="color: red;">Delete</a>
                             </div>
                         </div>
                     </div>
-                    <!-- {% include'includes/modals/delete_modal.html'%} -->
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 </div>
+{{pagination.links}}
 </div>
 </div>
 {%endblock content%}

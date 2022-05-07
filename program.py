@@ -1,8 +1,11 @@
 from datetime import timedelta
+from multiprocessing.spawn import prepare
+from turtle import pos
 from flask import Flask, render_template, url_for, request, redirect, flash, session
 from dbcon import PostgresManagement
 from src.functions import Functions
 from src.forms import VariousForms
+from flask_paginate import Pagination, get_page_args
 
 postgres =PostgresManagement()
 func = Functions()
@@ -73,7 +76,8 @@ def new_user():
 def books():
     if 'logged' in session:
         books = postgres.findBooks()
-        return render_template('pages/books.html', books=books)
+        books, page, per_page,pagination,paglen = func.paginateResults(books,5)
+        return render_template('pages/books.html', books=books, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
     else:
         return redirect(url_for('login'))
 
@@ -186,6 +190,7 @@ def delete_user(uid):
             return redirect(url_for('users'))
     else:
         return redirect(url_for('login'))
+
 
     
 if __name__ == '__main__':
