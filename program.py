@@ -44,6 +44,14 @@ def login():
     else:
         return render_template('index.html')
 
+@app.route('/logout',methods=['GET'])
+def logout():
+    if 'logged' in session:
+        session.pop('logged', None)
+        return redirect(url_for('login'))
+
+
+
     
 
 @app.route('/index')

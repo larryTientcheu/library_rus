@@ -11,6 +11,16 @@
 
 {% endfor %}
 {%include 'pages/page_layout.html'%}
+<div class="serach_field-area2">
+    <div class="search_inner">
+        <form Active="#">
+            <div class="search_field">
+                <input type="text" placeholder="Search here...">
+            </div>
+            <button type="submit"> <i class="ti-search"></i> </button>
+        </form>
+    </div>
+</div>
 <div class="add_button ml-10">
     <a href="new_user" data-target="new_user" class="btn_1">Add New</a>
 </div>
@@ -61,11 +71,6 @@
                 </td>
             </tr>   
             {% endfor %}
-            <div class="pagination">
-                <a href="#">&laquo;</a>
-                <a href="#">1</a>
-                <a href="#">&raquo;</a>
-              </div>
         </tbody>
     </table>
 
