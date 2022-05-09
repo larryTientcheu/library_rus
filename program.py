@@ -80,12 +80,17 @@ def new_user():
     else:
         return redirect(url_for('login'))
 
-@app.route('/books')
+@app.route('/books', methods= ['GET','POST'])
 def books():
     if 'logged' in session:
-        books = postgres.findBooks()
-        books, page, per_page,pagination,paglen = func.paginateResults(books,5)
-        return render_template('pages/books.html', books=books, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
+        if request.method == 'POST':
+            books = forms.searched(request)
+            books, page, per_page,pagination,paglen = func.paginateResults(books,5)
+            return render_template('pages/books.html', books=books, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
+        else:
+            books = postgres.findBooks()
+            books, page, per_page,pagination,paglen = func.paginateResults(books,5)
+            return render_template('pages/books.html', books=books, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
     else:
         return redirect(url_for('login'))
 
@@ -198,6 +203,11 @@ def delete_user(uid):
             return redirect(url_for('users'))
     else:
         return redirect(url_for('login'))
+
+@app.route('/search', methods=['POST'])
+def search():
+    text = forms.searched(request)
+    return render_template('forms/search.html', text=text)
 
 
     

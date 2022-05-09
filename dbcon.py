@@ -182,6 +182,13 @@ class PostgresManagement:
             return False
             
 
+    # Search functions
+    def searchBookName(self, table, name):
+        sql_command = "SELECT * FROM {} where LOWER(\"name\") like'%{}%' ORDER BY name DESC".format(table, name)
+        print(sql_command)
+        data = pd.read_sql(sql_command, self.connection)
+        return data
+
 
 
 if __name__ == "__main__":

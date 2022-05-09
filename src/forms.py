@@ -107,3 +107,12 @@ class VariousForms():
         postgres.returnRental(rental)
 
 
+    def searched(self, request):
+        search = request.form['searched']
+        table = request.form['searchTable']
+        print (table)
+        if table == 'books':
+            books = postgres.searchBookName(table, search)
+            print(books)
+            return books
+        
