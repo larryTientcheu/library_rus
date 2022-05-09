@@ -13,9 +13,10 @@
 {%include 'pages/page_layout.html'%}
 <div class="serach_field-area2">
     <div class="search_inner">
-        <form Active="#">
+        <form action="{{url_for('users')}}"  method="post">
             <div class="search_field">
-                <input type="text" placeholder="Search here...">
+                <input type="search" name= "searched" placeholder="Search here...">
+                <input type="hidden"  name="searchTable" value={{request.path[1:]}}>
             </div>
             <button type="submit"> <i class="ti-search"></i> </button>
         </form>

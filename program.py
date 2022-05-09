@@ -61,11 +61,17 @@ def index():
     else:
         return redirect(url_for('login'))
 
-@app.route('/users')
+@app.route('/users', methods= ['GET','POST'])
 def users():
     if 'logged' in session:
-        users = postgres.findUsers()
-        return render_template('pages/users.html', users=users)
+        if request.method == 'POST':
+            users = forms.searched(request)
+            users, page, per_page,pagination,paglen = func.paginateResults(users,5)
+            return render_template('pages/users.html', users=users, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
+        else:
+            users = postgres.findUsers()
+            users, page, per_page,pagination,paglen = func.paginateResults(users,5)
+            return render_template('pages/users.html', users=users, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
     else:
         return redirect(url_for('login'))
 
@@ -85,11 +91,11 @@ def books():
     if 'logged' in session:
         if request.method == 'POST':
             books = forms.searched(request)
-            books, page, per_page,pagination,paglen = func.paginateResults(books,5)
+            books, page, per_page,pagination,paglen = func.paginateResults(books,10)
             return render_template('pages/books.html', books=books, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
         else:
             books = postgres.findBooks()
-            books, page, per_page,pagination,paglen = func.paginateResults(books,5)
+            books, page, per_page,pagination,paglen = func.paginateResults(books,10)
             return render_template('pages/books.html', books=books, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
     else:
         return redirect(url_for('login'))
@@ -204,10 +210,6 @@ def delete_user(uid):
     else:
         return redirect(url_for('login'))
 
-@app.route('/search', methods=['POST'])
-def search():
-    text = forms.searched(request)
-    return render_template('forms/search.html', text=text)
 
 
     

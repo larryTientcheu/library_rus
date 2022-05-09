@@ -189,6 +189,11 @@ class PostgresManagement:
         data = pd.read_sql(sql_command, self.connection)
         return data
 
+    def searchUserName(self, table, name):
+        sql_command = "SELECT * FROM {} where LOWER(\"username\") like'%{}%' ORDER BY username DESC".format(table, name)
+        print(sql_command)
+        data = pd.read_sql(sql_command, self.connection)
+        return data
 
 
 if __name__ == "__main__":

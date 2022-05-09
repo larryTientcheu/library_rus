@@ -113,6 +113,7 @@ class VariousForms():
         print (table)
         if table == 'books':
             books = postgres.searchBookName(table, search)
-            print(books)
             return books
-        
+        if table == 'users':
+            users = postgres.searchUserName(table, search)
+            return users
