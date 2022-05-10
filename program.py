@@ -1,6 +1,5 @@
 from datetime import timedelta
 from multiprocessing.spawn import prepare
-from turtle import pos
 from flask import Flask, render_template, url_for, request, redirect, flash, session
 from dbcon import PostgresManagement
 from src.functions import Functions
