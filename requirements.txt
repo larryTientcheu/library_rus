@@ -5,3 +5,5 @@ pandas
 werkzeug
 sqlalchemy
 gunicorn
+flask_paginate
+turtle
