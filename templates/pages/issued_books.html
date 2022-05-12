@@ -34,7 +34,8 @@
             </tr>
         </thead>
         <tbody>
-            {% for j in range(ibooks|length) %}
+            {%set a, b = paglen%}
+            {% for j in range(a,b) %}
             <tr>
                 <td>{{ibooks.rid[j]}}</td>
                 <td>{{ibooks.bid[j]}} :: {{ibooks.bookname[j]}}</td>
@@ -65,6 +66,7 @@
         </tbody>
     </table>
 </div>
+<div style="position: relative; left: 40%; margin-top: 2%;">{{pagination.links}}</div>
 </div>
 </div>
 

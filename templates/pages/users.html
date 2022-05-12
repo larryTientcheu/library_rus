@@ -41,7 +41,8 @@
             </tr>
         </thead>
         <tbody>
-            {% for j in range(users|length) %}
+            {%set a, b = paglen%}
+            {% for j in range(a,b) %}
             <tr>
                 <td>{{users.uid[j]}}</td>
                 <td>{{users.username[j]}}</td>
@@ -69,6 +70,7 @@
     </table>
 
 </div>
+<div style="position: relative; left: 40%; margin-top: 2%;">{{pagination.links}}</div>
 </div>
 </div>
 {%endblock content%}
