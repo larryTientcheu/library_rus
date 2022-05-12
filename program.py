@@ -4,7 +4,6 @@ from flask import Flask, render_template, url_for, request, redirect, flash, ses
 from dbcon import PostgresManagement
 from src.functions import Functions
 from src.forms import VariousForms
-from flask_paginate import Pagination, get_page_args
 
 postgres =PostgresManagement()
 func = Functions()
@@ -17,7 +16,6 @@ app.secret_key = 'grimmteshco'
 def login():
     error = None
     if 'logged' not in session:
-        #session.permanent = True
         app.permanent_session_lifetime = timedelta(days=30)
         if request.method == 'POST':
             '''
@@ -48,10 +46,6 @@ def logout():
     if 'logged' in session:
         session.pop('logged', None)
         return redirect(url_for('login'))
-
-
-
-    
 
 @app.route('/index', methods= ['GET','POST'])
 def index():
