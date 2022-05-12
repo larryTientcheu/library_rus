@@ -39,8 +39,8 @@ def login():
                 session.pop('logged', None)
         return render_template('pages/login.html', error=error)
     else:
-        return render_template('index.html')
-
+        return redirect(url_for('login'))
+        
 @app.route('/logout',methods=['GET'])
 def logout():
     if 'logged' in session:
