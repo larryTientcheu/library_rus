@@ -14,7 +14,7 @@
 
 <!-- main content part here -->
 <!--/ menu  -->
-<div class="main_content_iner ">
+<div class="main_content_iner">
     <div class="container-fluid p-0">
         <div class="row justify-content-center">
             <div class="col-lg-12">
@@ -25,36 +25,48 @@
                                 <div class="quick_activity_wrap">
 
                                     <a href="users">
-                                        <div class="single_quick_activity d-flex">
+                                        <div class="single_quick_activity
+                                            d-flex">
                                             <div class="icon">
-                                                <img src="{{ url_for('static', filename='images/man.svg')}}" alt="">
+                                                <img src="{{ url_for('static',
+                                                    filename='images/man.svg')}}"
+                                                    alt="">
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter">{{data.user[0]}}</span> </h3>
+                                                <h3><span class="counter">{{data.user[0]}}</span>
+                                                </h3>
                                                 <p>Users</p>
                                             </div>
                                         </div>
                                     </a>
 
                                     <a href="books">
-                                        <div class="single_quick_activity d-flex">
+                                        <div class="single_quick_activity
+                                            d-flex">
                                             <div class="icon">
-                                                <img src="{{ url_for('static', filename='images/cap.svg')}}" alt="">
+                                                <img src="{{ url_for('static',
+                                                    filename='images/cap.svg')}}"
+                                                    alt="">
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter">{{data.book[0]}}</span> </h3>
+                                                <h3><span class="counter">{{data.book[0]}}</span>
+                                                </h3>
                                                 <p>Books</p>
                                             </div>
                                         </div>
                                     </a>
 
                                     <a href="issued_books">
-                                        <div class="single_quick_activity d-flex">
+                                        <div class="single_quick_activity
+                                            d-flex">
                                             <div class="icon">
-                                                <img src="{{ url_for('static', filename='images/wheel.svg')}}" alt="">
+                                                <img src="{{ url_for('static',
+                                                    filename='images/wheel.svg')}}"
+                                                    alt="">
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter">{{data.rental[0]}}</span> </h3>
+                                                <h3><span class="counter">{{data.rental[0]}}</span>
+                                                </h3>
                                                 <p>Issued Books</p>
                                             </div>
                                         </div>
@@ -67,25 +79,31 @@
             </div>
             <div class="col-xl-7">
                 <div class="white_box QA_section card_height_100">
-                    <div class="white_box_tittle list_header m-0 align-items-center">
+                    <div class="white_box_tittle list_header m-0
+                        align-items-center">
                         <div class="main-title mb-sm-15">
                             <h3 class="m-0 nowrap">Books</h3>
                         </div>
                         <div class="box_right d-flex lms_block">
                             <div class="serach_field-area2">
                                 <div class="search_inner">
-                                    <form action="{{url_for('index')}}" method="post">
+                                    <form action="{{url_for('index')}}"
+                                        method="post">
                                         <div class="search_field">
-                                            <input type="text" name="searched" placeholder="Search here...">
-                                            <input type="hidden" name="searchTable" value="books">
+                                            <input type="text" name="searched"
+                                                placeholder="Search here...">
+                                            <input type="hidden"
+                                                name="searchTable"
+                                                value="books">
                                         </div>
-                                        <button type="submit"> <i class="ti-search"></i> </button>
+                                        <button type="submit"> <i
+                                                class="ti-search"></i> </button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="QA_table ">
+                    <div class="QA_table">
                         <!-- table-responsive -->
                         <table class="table lms_table_active2">
                             <thead>
@@ -106,18 +124,30 @@
                                     <td>{{books.price[j]}}</td>
                                     <td>{{books.genre[j]}}</td>
                                     <td>{{books.author[j]}}</td>
-                    
+
                                     <td>
-                    
-                                        <div class="amoutn_action d-flex align-items-center">
+
+                                        <div class="amoutn_action d-flex
+                                            align-items-center">
                                             <a href="#" class="status_btn">Active</a>
                                             <div class="dropdown ml-4">
-                                                <a class=" dropdown-toggle hide_pils" href="#" role="button" id="dropdownMenuLink"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fas fa-ellipsis-v"></i>
+                                                <a class="dropdown-toggle
+                                                    hide_pils" href="#"
+                                                    role="button"
+                                                    id="dropdownMenuLink"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    <i class="fas
+                                                        fa-ellipsis-v"></i>
                                                 </a>
-                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                                    <a class="dropdown-item" href="edit_book/{{books.bid[j]}}">Rent this book</a>
+                                                <div class="dropdown-menu
+                                                    dropdown-menu-right"
+                                                    aria-labelledby="dropdownMenuLink">
+                                                    <a class="dropdown-item"
+                                                        href="edit_book/{{books.bid[j]}}">Rent
+                                                        this
+                                                        book</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -129,7 +159,6 @@
                         </table>
                     </div>
                     <div style="position: relative; left: 40%; margin-top: 2%;">{{pagination.links}}</div>
-
                 </div>
             </div>
 
