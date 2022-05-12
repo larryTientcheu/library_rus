@@ -109,7 +109,6 @@ class VariousForms():
 
     def searched(self, request):
         table = request.form['searchTable']
-        print (table)
         if table == 'books':
             search = request.form['searched']
             books = postgres.searchBookName(table, search)

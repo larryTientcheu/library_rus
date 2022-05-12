@@ -49,11 +49,23 @@ def logout():
         session.pop('logged', None)
         return redirect(url_for('login'))
 
-@app.route('/index')
+
+
+    
+
+@app.route('/index', methods= ['GET','POST'])
 def index():
     if 'logged' in session:
         data = postgres.indexData()
-        return render_template('index.html', data = data)
+        if request.method == 'POST':
+            books = forms.searched(request)
+            print(books)
+            books, page, per_page,pagination,paglen = func.paginateResults(books,10)
+            return render_template('index.html', data=data, books=books, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
+        else:
+            books = postgres.findBooks()
+            books, page, per_page,pagination,paglen = func.paginateResults(books,10)
+            return render_template('index.html', data=data, books=books, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
     else:
         return redirect(url_for('login'))
 
@@ -70,9 +82,8 @@ def users():
                 users, page, per_page,pagination,paglen = func.paginateResults(users,5)
                 return render_template('pages/users.html', users=users, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
         else:
-            data = postgres.indexData()
             flash('Sorry, you don\'t have the permission to view this page')
-            return redirect(url_for('index', data=data))
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
 
@@ -86,9 +97,8 @@ def new_user():
                 return redirect(url_for('users'))
             return render_template('forms/new_user.html')
         else:
-            data = postgres.indexData()
-            flash('Sorry, you don\'t have the permission to view this page')
-            return redirect(url_for('index', data=data))
+            flash('Sorry, you don\'t have the permission to access this resource')
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
 
@@ -105,9 +115,8 @@ def books():
                 books, page, per_page,pagination,paglen = func.paginateResults(books,10)
                 return render_template('pages/books.html', books=books, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
         else:
-            data = postgres.indexData()
-            flash('Sorry, you don\'t have the permission to view this page')
-            return redirect(url_for('index', data=data))
+            flash('Sorry, you don\'t have the permission to access this resource')
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
 
@@ -120,9 +129,8 @@ def new_book():
                 return redirect(url_for('books'))
             return render_template('forms/new_book.html')
         else:
-            data = postgres.indexData()
-            flash('Sorry, you don\'t have the permission to view this page')
-            return redirect(url_for('index', data=data))
+            flash('Sorry, you don\'t have the permission to perform this action')
+            return redirect(url_for('books'))
     else:
         return redirect(url_for('login'))
 
@@ -141,9 +149,8 @@ def issued_books():
                 ibooks, page, per_page,pagination,paglen = func.paginateResults(ibooks,10)
                 return render_template('pages/issued_books.html', ibooks=ibooks, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
         else:
-            data = postgres.indexData()
-            flash('Sorry, you don\'t have the permission to view this page')
-            return redirect(url_for('index', data=data))
+            flash('Sorry, you don\'t have the permission to  access this resource')
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
 
@@ -159,9 +166,8 @@ def issue_book():
                 return redirect(url_for('issued_books'))
             return render_template('forms/issue_book.html', bid=bid, uid=uid)
         else:
-            data = postgres.indexData()
-            flash('Sorry, you don\'t have the permission to view this page')
-            return redirect(url_for('index', data=data))
+            flash('Sorry, you don\'t have the permission to  access this resource')
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
 
@@ -176,9 +182,8 @@ def retrun_books():
                 return redirect(url_for('issued_books'))
             return render_template('forms/return_book.html', rid=rid)
         else:
-            data = postgres.indexData()
-            flash('Sorry, you don\'t have the permission to view this page')
-            return redirect(url_for('index', data=data))
+            flash('Sorry, you don\'t have the permission to access this resource')
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
 
@@ -199,9 +204,8 @@ def edit_user(uid):
             else:
                 return render_template('forms/edits/edit_user.html',user=u)
         else:
-            data = postgres.indexData()
-            flash('Sorry, you don\'t have the permission to view this page')
-            return redirect(url_for('index', data=data))
+            flash('Sorry, you don\'t have the permission to access this resource')
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
 
@@ -221,7 +225,7 @@ def edit_book(bid):
                 return render_template('forms/edits/edit_book.html',book=b)
         else:
             flash('Sorry, you don\'t have the permission to edit books')
-            return redirect(url_for('books'))
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
 
@@ -236,9 +240,8 @@ def delete_book(bid):
                 flash("The book has not been deleted")
                 return redirect(url_for('books'))
         else:
-            data = postgres.indexData()
-            flash('Sorry, you don\'t have the permission to view this page')
-            return redirect(url_for('index', data=data))
+            flash('Sorry, you don\'t have the permission to perform this action')
+            return redirect(url_for('books'))
     else:
         return redirect(url_for('login'))
 
@@ -253,11 +256,13 @@ def delete_user(uid):
                 flash("The user has not been deleted")
                 return redirect(url_for('users'))
         else:
-            data = postgres.indexData()
             flash('Sorry, you don\'t have the permission to view this page')
-            return redirect(url_for('index', data=data))
+            return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
+@app.route('/test')
+def test():
+    return render_template('pages/test.html')
 
 
     
