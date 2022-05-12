@@ -108,12 +108,18 @@ class VariousForms():
 
 
     def searched(self, request):
-        search = request.form['searched']
         table = request.form['searchTable']
         print (table)
         if table == 'books':
+            search = request.form['searched']
             books = postgres.searchBookName(table, search)
             return books
         if table == 'users':
+            search = request.form['searched']
             users = postgres.searchUserName(table, search)
             return users
+        if table == 'issued_books':
+            search = request.form['daterange']
+            date = search.split("- ", 1)
+            ibooks = postgres.searchRentals(date[0], date[1])
+            return ibooks

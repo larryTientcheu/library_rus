@@ -11,14 +11,24 @@ class PostgresManagement:
         # Set up a connection to the postgres server.
         conn_string = "host=" + creds.PGHOST + " port=" + "5432" + " dbname=" + creds.PGDATABASE + " user=" + creds.PGUSER \
             + " password=" + creds.PGPASSWORD
-        #conn = psycopg2.connect(conn_string)
+        conn = psycopg2.connect(conn_string)
 
-        DATABASE_URL = os.environ['DATABASE_URL']
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        # DATABASE_URL = os.environ['DATABASE_URL']
+        # conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
         self.connection = conn
         self.cursor = conn.cursor()
         self.schema = 'public'
+
+    # Index Data
+    def indexData(self):
+        sql_command = """SELECT (SELECT COUNT(uid) FROM users) AS user,
+        (SELECT COUNT(bid) FROM books) AS book,
+        (SELECT COUNT(rid) FROM rental) AS rental;
+        """
+        data = pd.read_sql(sql_command, self.connection)
+        return data
+
 
     def findUsers(self):
         sql_command = "SELECT * FROM users;"
@@ -44,7 +54,7 @@ class PostgresManagement:
             return ''
 
     def findBooks(self):
-        sql_command = "SELECT * FROM books;"
+        sql_command = "SELECT * FROM books  ORDER BY name ASC"
         data = pd.read_sql(sql_command, self.connection)
         return data
 
@@ -57,7 +67,10 @@ class PostgresManagement:
             return ''
 
     def findRentals(self):
-        sql_command = "SELECT * FROM rental;"
+        sql_command = """SELECT rid,rental.bid, rental.uid, rental.issuedate, rental.period, rental.returndate, rental.fine, users.username, books.name as bookname 
+        FROM rental inner join users on rental.uid = users.uid 
+        inner join books on rental.bid = books.bid;"""
+
         data = pd.read_sql(sql_command, self.connection)
         return data
 
@@ -184,13 +197,21 @@ class PostgresManagement:
 
     # Search functions
     def searchBookName(self, table, name):
-        sql_command = "SELECT * FROM {} where LOWER(\"name\") like'%{}%' ORDER BY name DESC".format(table, name)
+        sql_command = "SELECT * FROM {} where LOWER(\"name\") like'%{}%' ORDER BY \"name\" DESC".format(table, name)
         print(sql_command)
         data = pd.read_sql(sql_command, self.connection)
         return data
 
     def searchUserName(self, table, name):
         sql_command = "SELECT * FROM {} where LOWER(\"username\") like'%{}%' ORDER BY username DESC".format(table, name)
+        print(sql_command)
+        data = pd.read_sql(sql_command, self.connection)
+        return data
+
+    def searchRentals(self,date1,date2):
+        sql_command =  """SELECT rid,rental.bid, rental.uid, rental.issuedate, rental.period, rental.returndate, rental.fine, users.username, books.name as bookname 
+        FROM rental inner join users on rental.uid = users.uid 
+        inner join books on rental.bid = books.bid WHERE  rental.issuedate >='{}' AND rental.issuedate <= '{}';""".format(date1, date2)
         print(sql_command)
         data = pd.read_sql(sql_command, self.connection)
         return data

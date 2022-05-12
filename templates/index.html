@@ -24,37 +24,37 @@
                             <div class="col-12">
                                 <div class="quick_activity_wrap">
 
-                                    <a href="doctors">
+                                    <a href="users">
                                         <div class="single_quick_activity d-flex">
                                             <div class="icon">
                                                 <img src="{{ url_for('static', filename='images/man.svg')}}" alt="">
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter"></span> </h3>
+                                                <h3><span class="counter">{{data.user[0]}}</span> </h3>
                                                 <p>Users</p>
                                             </div>
                                         </div>
                                     </a>
 
-                                    <a href="nurses">
+                                    <a href="books">
                                         <div class="single_quick_activity d-flex">
                                             <div class="icon">
                                                 <img src="{{ url_for('static', filename='images/cap.svg')}}" alt="">
                                             </div>
                                             <div class="count_content">
-                                                <h3><span class="counter"></span> </h3>
+                                                <h3><span class="counter">{{data.book[0]}}</span> </h3>
                                                 <p>Books</p>
                                             </div>
                                         </div>
                                     </a>
 
-                                    <a href="patients">
+                                    <a href="issued_books">
                                     <div class="single_quick_activity d-flex">
                                         <div class="icon">
                                             <img src="{{ url_for('static', filename='images/wheel.svg')}}" alt="">
                                         </div>
                                         <div class="count_content">
-                                            <h3><span class="counter"></span> </h3>
+                                            <h3><span class="counter">{{data.rental[0]}}</span> </h3>
                                             <p>Issued Books</p>
                                         </div>
                                     </div>

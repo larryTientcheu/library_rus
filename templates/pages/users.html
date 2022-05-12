@@ -43,14 +43,7 @@
         <tbody>
             {% for j in range(users|length) %}
             <tr>
-                <th scope="row">
-                    <div class="patient_thumb d-flex align-items-center">
-                        <div class="student_list_img mr_20">
-                            <img src="{{ url_for('static', filename='images/pataint.png')}}" alt="" srcset="">
-                        </div>
-                        {{users.uid[j]}}
-                    </div>
-                </th>
+                <td>{{users.uid[j]}}</td>
                 <td>{{users.username[j]}}</td>
                 <td>{{users.admin[j]}}</td>
 

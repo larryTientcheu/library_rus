@@ -2,9 +2,10 @@
 {%include 'pages/page_layout.html'%}
 <div class="serach_field-area2">
     <div class="search_inner">
-        <form Active="#">
+        <form action="{{url_for('issued_books')}}" method="post">
             <div class="search_field">
-                <input type="text" placeholder="Search here...">
+                <input type="text" name="daterange">
+                <input type="hidden" name="searchTable" value={{request.path[1:]}}>
             </div>
             <button type="submit"> <i class="ti-search"></i> </button>
         </form>
@@ -35,20 +36,13 @@
         <tbody>
             {% for j in range(ibooks|length) %}
             <tr>
-                <th scope="row">
-                    <div class="patient_thumb d-flex align-items-center">
-                        <div class="student_list_img mr_20">
-                            <img src="{{ url_for('static', filename='images/pataint.png')}}" alt="" srcset="">
-                        </div>
-                        {{ibooks.rid[j]}}
-                    </div>
-                </th>
-                <td>{{ibooks.bid[j]}}</td>
-                <td>{{ibooks.uid[j]}}</td>
+                <td>{{ibooks.rid[j]}}</td>
+                <td>{{ibooks.bid[j]}} :: {{ibooks.bookname[j]}}</td>
+                <td>{{ibooks.uid[j]}} :: {{ibooks.username[j]}}</td>
                 <td>{{ibooks.issuedate[j]}}</td>
-                <td>{{ibooks.period[j]}}</td>
-                <td>{{ibooks.returndate[j]}}</td>
-                <td>{{ibooks.fine[j]}}</td>
+                <td>{{ibooks.period[j]}} days</td>
+                <td>{{ibooks.returndate[j] or ''}}</td>
+                <td>{{ibooks.fine[j]}} &#8381;</td>
 
                 <td>
                     <div class="amoutn_action d-flex align-items-center">
@@ -60,7 +54,6 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">View</a>
                                 <a class="dropdown-item" href="#">Edit</a>
                                 <a class="dropdown-item" href="#">Delete</a>
                             </div>
@@ -74,4 +67,5 @@
 </div>
 </div>
 </div>
+
 {%endblock content%}

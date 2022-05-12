@@ -5,9 +5,9 @@
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     {{message}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
     </button>
-  </div>
+</div>
 
 
 {% endfor %}
@@ -15,10 +15,10 @@
 {%include 'pages/page_layout.html'%}
 <div class="serach_field-area2">
     <div class="search_inner">
-        <form action="{{url_for('books')}}"  method="post">
+        <form action="{{url_for('books')}}" method="post">
             <div class="search_field">
-                <input type="search" name= "searched" placeholder="Search here...">
-                <input type="hidden"  name="searchTable" value={{request.path[1:]}}>
+                <input type="search" name="searched" placeholder="Search here...">
+                <input type="hidden" name="searchTable" value={{request.path[1:]}}>
             </div>
             <button type="submit"> <i class="ti-search"></i> </button>
         </form>
@@ -28,40 +28,32 @@
     <a href="new_book" data-target="new_book" class="btn_1">Add New</a>
 </div>
 </div>
-</div> 
+</div>
 <!--/ menu  -->
 <div class="QA_table ">
     <!-- table-responsive -->
     <table class="table lms_table_active2">
         <thead>
-            <tr>  
-                <th scope="col">BID</th>
+            <tr>
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">genre</th>
                 <th scope="col">author</th>
                 <th scope="col">Status</th>
+                <th scope="col">BID</th>
             </tr>
         </thead>
         <tbody>
             {%set a, b = paglen%}
             {% for j in range(a,b) %}
             <tr>
-                <th scope="row">
-                    <div class="patient_thumb d-flex align-items-center">
-                        <div class="student_list_img mr_20">
-                            <img src="{{ url_for('static', filename='images/pataint.png')}}" alt="" srcset="">
-                        </div>
-                        {{books.bid[j]}}
-                    </div>
-                </th>
                 <td>{{books.name[j]}}</td>
                 <td>{{books.price[j]}}</td>
                 <td>{{books.genre[j]}}</td>
                 <td>{{books.author[j]}}</td>
 
                 <td>
-                    
+
                     <div class="amoutn_action d-flex align-items-center">
                         <a href="#" class="status_btn">Active</a>
                         <div class="dropdown ml-4">
@@ -71,11 +63,13 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="edit_book/{{books.bid[j]}}">Edit</a>
-                                <a  class="dropdown-item" href="delete_book/{{books.bid[j]}}" style="color: red;">Delete</a>
+                                <a class="dropdown-item" href="delete_book/{{books.bid[j]}}"
+                                    style="color: red;">Delete</a>
                             </div>
                         </div>
                     </div>
                 </td>
+                <td>{{books.bid[j]}}</td>
             </tr>
             {% endfor %}
         </tbody>

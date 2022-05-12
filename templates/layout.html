@@ -40,6 +40,7 @@
     <link href="{{ url_for('static', filename='css/metisMenu.css')}}" rel="stylesheet">
     <!-- style CSS -->
     <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/daterangepicker.css')}}" rel="stylesheet">
     <!-- <link href="{{ url_for('static', filename='css/default.css')}}" rel="stylesheet"> -->
 </head>
 
@@ -104,6 +105,14 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/apex_chart_list.js')}}"></script>
     <!-- my own js -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/default.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/moment.min.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/daterangepicker.js')}}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('input[name="daterange"]').daterangepicker();
+        });
+    </script>
 </body>
 
 </html>
