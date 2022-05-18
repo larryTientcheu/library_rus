@@ -45,13 +45,13 @@
 </head>
 
 <body class="crm_body_bg">
-    <div >
+    <div>
         {% include 'includes/_sidebar.html'%}
         <section class="main_content dashboard_part">
             {% include 'includes/_navbar.html'%}
             {% block content %}{% endblock%}
         </section>
-        
+
     </div>
 
     <!-- jquery slim -->
@@ -71,7 +71,7 @@
     <!-- swiper slider js -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/swiper.min.js')}}"></script>
     <!-- nice select -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.nice-select.min.js')}}" ></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
     <!-- owl carousel -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/owl.carousel.min.js')}}"></script>
     <!-- gijgo css -->
@@ -99,7 +99,7 @@
 
     <!-- custom js -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/custom.js')}}"></script>
-    
+
     <script type="text/javascript" src="{{ url_for('static', filename='js/bar_active_1.js')}}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/apex_chart_list.js')}}"></script>
     <!-- my own js -->
@@ -109,7 +109,11 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/daterangepicker.js')}}"></script>
     <script type="text/javascript">
         $(function () {
-            $('input[name="daterange"]').daterangepicker();
+        $('input[name="daterange"]').daterangepicker({
+        }, function (start, end, label) {
+            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' +
+                end.format('YYYY-MM-DD'));
+        });
         });
     </script>
 </body>
