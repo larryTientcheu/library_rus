@@ -23,7 +23,10 @@ class VariousForms():
         else:
             admin = False
         user = username, password, admin
-        postgres.addUser(user)
+        if postgres.addUser(user):
+            return True
+        else:
+            return False
 
 
     def editUser(self, request, user):
@@ -56,8 +59,10 @@ class VariousForms():
         author = request.form['author']
 
         book = name, price, genre, author
-        postgres.addBook(book)
-
+        if postgres.addBook(book):
+            return True
+        else:
+            return False
 
     def deleteUser(self, uid):
         if (postgres.deleteUser(uid)):
@@ -104,7 +109,10 @@ class VariousForms():
 
         rental = returnDate, fine, rid
         print(rental[0])
-        postgres.returnRental(rental)
+        if postgres.returnRental(rental):
+            return True
+        else:
+            return False
 
 
     def searched(self, request):

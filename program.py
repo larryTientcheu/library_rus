@@ -87,9 +87,14 @@ def new_user():
     if 'logged' in session:
         if session['admin']:
             if request.method == 'POST' and len(request.form) > 0:
-                forms.addUser(request)
-                return redirect(url_for('users'))
-            return render_template('forms/new_user.html')
+                if forms.addUser(request):
+                    flash("The user has been added succesfully")
+                    return redirect(url_for('users'))
+                else:
+                    flash("Error while adding a user")
+                    return render_template('forms/new_user.html')
+            else:
+                return render_template('forms/new_user.html')
         else:
             flash('Sorry, you don\'t have the permission to access this resource')
             return redirect(url_for('index'))
@@ -119,9 +124,14 @@ def new_book():
     if 'logged' in session:
         if session['admin']:
             if request.method == 'POST' and len(request.form) > 0:
-                forms.addBook(request)
-                return redirect(url_for('books'))
-            return render_template('forms/new_book.html')
+                if forms.addBook(request):
+                    flash("The book has been added succesfully")
+                    return redirect(url_for('books'))
+                else:
+                    flash("There was an error while adding a book")
+                    return render_template('forms/new_book.html')
+            else:
+                return render_template('forms/new_book.html')
         else:
             flash('Sorry, you don\'t have the permission to perform this action')
             return redirect(url_for('books'))
@@ -138,7 +148,6 @@ def issued_books():
                 ibooks = forms.searched(request)
                 ibooks, page, per_page,pagination,paglen = func.paginateResults(ibooks,10)
                 return render_template('pages/issued_books.html', ibooks=ibooks, page=page,per_page=per_page,pagination=pagination,paglen=paglen)
-                
             else:
                 ibooks = postgres.findRentals()
                 ibooks, page, per_page,pagination,paglen = func.paginateResults(ibooks,10)
@@ -157,9 +166,14 @@ def issue_book():
             bid = postgres.findBooks()
             uid = postgres.findUsers()
             if request.method == 'POST' and len(request.form) > 0:
-                forms.addRental(request)
-                return redirect(url_for('issued_books'))
-            return render_template('forms/issue_book.html', bid=bid, uid=uid)
+                if forms.addRental(request):
+                    flash('The book has been issued')
+                    return redirect(url_for('issued_books'))
+                else:
+                    flash('The book has not been issued')
+                    return render_template('forms/issue_book.html', bid=bid, uid=uid)
+            else:
+                return render_template('forms/issue_book.html', bid=bid, uid=uid)
         else:
             flash('Sorry, you don\'t have the permission to  access this resource')
             return redirect(url_for('index'))
@@ -255,6 +269,7 @@ def delete_user(uid):
             return redirect(url_for('index'))
     else:
         return redirect(url_for('login'))
+
 @app.route('/test')
 def test():
     return render_template('pages/test.html')

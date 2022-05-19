@@ -1,5 +1,6 @@
 
 import psycopg2
+from sqlalchemy import false
 import credent as creds
 import pandas as pd
 import os
@@ -94,26 +95,28 @@ class PostgresManagement:
     def addUser(self, user):
         sql_command = 'INSERT INTO users (username,password,admin) values {}'.format(
             user)
-        print(sql_command)
         try:
             self.cursor.execute(sql_command)
             self.connection.commit()
             print('inserted')
+            return True
         except:
             self.connection.rollback()
             print('error')
+            return False
 
     def addBook(self, book):
         sql_command = 'INSERT INTO books (name, price, genre, author) values {}'.format(
             book)
-        print(sql_command)
         try:
             self.cursor.execute(sql_command)
             self.connection.commit()
             print('inserted')
+            return True
         except:
             self.connection.rollback()
             print('error')
+            return False
 
     def addRental(self, rental):
         sql_command = 'INSERT INTO rental (bid,uid,issuedate,period) values {}'.format(
@@ -123,16 +126,20 @@ class PostgresManagement:
             self.cursor.execute(sql_command)
             self.connection.commit()
             #### Add returns true or false
+            return True
         except:
             self.connection.rollback()
+            return False
 
     def returnRental(self,rental):
         sql_command ="UPDATE rental SET returndate = '{}', fine = '{}' where rid = '{}'".format(rental[0],rental[1],rental[2])
         try:
             self.cursor.execute(sql_command)
             self.connection.commit()
+            return True
         except:
             self.connection.rollback()
+            return False
 
     ##Update##
 
