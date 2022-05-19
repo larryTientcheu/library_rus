@@ -129,6 +129,7 @@ def new_book():
         return redirect(url_for('login'))
 
 
+
 @app.route('/issued_books', methods=['GET', 'POST'])
 def issued_books():
     if 'logged' in session:
