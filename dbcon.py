@@ -38,7 +38,6 @@ class PostgresManagement:
     def findUser(self, username):
         sql_command = "SELECT * FROM users WHERE username ='{}' LIMIT 1".format(
             username)
-        # print(sql_command)
         try:
             data = pd.read_sql(sql_command, self.connection)
             return data
