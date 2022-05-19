@@ -122,21 +122,17 @@ class PostgresManagement:
         try:
             self.cursor.execute(sql_command)
             self.connection.commit()
-            print('inserted')
+            #### Add returns true or false
         except:
             self.connection.rollback()
-            print('error')
 
     def returnRental(self,rental):
         sql_command ="UPDATE rental SET returndate = '{}', fine = '{}' where rid = '{}'".format(rental[0],rental[1],rental[2])
-        print(sql_command)
         try:
             self.cursor.execute(sql_command)
             self.connection.commit()
-            print('inserted')
         except:
             self.connection.rollback()
-            print('error')
 
     ##Update##
 
@@ -146,38 +142,30 @@ class PostgresManagement:
         try:
             self.cursor.execute(sql_command)
             self.connection.commit()
-            print('updated')
             return True
         except:
             self.connection.rollback()
-            print('error')
             return False
 
     def editBook(self, book):
         sql_command = "UPDATE books SET \"name\" = '{}', price = '{}', genre='{}', author ='{}' where bid='{}'".format(book[1],book[2],book[3],book[4], book[0])
-        print(sql_command)
         try:
             self.cursor.execute(sql_command)
             self.connection.commit()
-            print('updated')
             return True
         except:
             self.connection.rollback()
-            print('error')
             return False
 
     ### DELETE
     def deleteUser(self, uid):
         sql_command = "DELETE FROM users where uid={}".format(uid)
-        print(sql_command)
         try:
             self.cursor.execute(sql_command)
             self.connection.commit()
-            print('deleted')
             return True
         except:
             self.connection.rollback()
-            print('error')
             return False
 
     def deleteBook(self, bid):
@@ -186,24 +174,20 @@ class PostgresManagement:
         try:
             self.cursor.execute(sql_command)
             self.connection.commit()
-            print('deleted')
             return True
         except:
             self.connection.rollback()
-            print('error')
             return False
             
 
     # Search functions
     def searchBookName(self, table, name):
         sql_command = "SELECT * FROM {} where LOWER(\"name\") like'%{}%' ORDER BY \"name\" DESC".format(table, name)
-        print(sql_command)
         data = pd.read_sql(sql_command, self.connection)
         return data
 
     def searchUserName(self, table, name):
         sql_command = "SELECT * FROM {} where LOWER(\"username\") like'%{}%' ORDER BY username DESC".format(table, name)
-        print(sql_command)
         data = pd.read_sql(sql_command, self.connection)
         return data
 
@@ -211,7 +195,6 @@ class PostgresManagement:
         sql_command =  """SELECT rid,rental.bid, rental.uid, rental.issuedate, rental.period, rental.returndate, rental.fine, users.username, books.name as bookname 
         FROM rental inner join users on rental.uid = users.uid 
         inner join books on rental.bid = books.bid WHERE  rental.issuedate >='{}' AND rental.issuedate <= '{}';""".format(date1, date2)
-        print(sql_command)
         data = pd.read_sql(sql_command, self.connection)
         return data
 
